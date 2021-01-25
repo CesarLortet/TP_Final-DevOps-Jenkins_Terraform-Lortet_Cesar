@@ -7,7 +7,7 @@ variable "bucket" {
 variable "securityGroupName" {
   type = string
   description = "Security Group Name"
-  default = "instance_terrafom_lortet"
+  default = "instance_terraform_lortet"
 }
 
 variable "path" {
