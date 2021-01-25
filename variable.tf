@@ -4,6 +4,12 @@ variable "bucket" {
   default = "ec2_terraform"
 }
 
+variable "securityGroupName" {
+  type = string
+  description = "Security Group Name"
+  default = "instance_terrafom_lortet"
+}
+
 variable "path" {
   type = string
   description = "Terraform state path"
