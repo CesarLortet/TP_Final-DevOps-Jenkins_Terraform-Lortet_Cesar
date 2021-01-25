@@ -22,6 +22,34 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
+resource "aws_default_security_group" "default" {
+   vpc_id      = aws_default_vpc.vpc_default_cesar.id
+ ingress {
+     from_port   = 22
+     to_port     = 22
+     protocol    = "tcp"
+     cidr_blocks     = ["0.0.0.0/0"]
+   }
+ ingress {
+     from_port   = 8080
+     to_port     = 8080
+     protocol    = "tcp"
+     cidr_blocks     = ["0.0.0.0/0"]
+   }
+ ingress {
+     from_port   = 80
+     to_port     = 80
+     protocol    = "tcp"
+     cidr_blocks     = ["0.0.0.0/0"]
+   }
+ egress {
+     from_port       = 0
+     to_port         = 0
+     protocol        = "-1"
+     cidr_blocks     = ["0.0.0.0/0"]
+   }
+ }
+
 resource "aws_instance" "web" {
   count         = var.create_instance ? var.instance_number : 0
   ami           = data.aws_ami.ubuntu.id
