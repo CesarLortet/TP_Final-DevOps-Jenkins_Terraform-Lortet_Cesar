@@ -19,6 +19,7 @@ variable "path" {
 variable "instance_name" {
   type = string
   description = "Instance name"
+  default = "instance_jenkins_server_lortet"
 }
 
 variable "region" {
