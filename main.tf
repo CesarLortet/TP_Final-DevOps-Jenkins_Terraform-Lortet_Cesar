@@ -33,6 +33,15 @@ resource "aws_instance" "web" {
   }
 }
 
+resource "aws_s3_bucket" "ec2_terraform" {
+  bucket = "my-tf-test-bucket"
+  acl    = "private"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
 
 resource "aws_default_security_group" "default" {
  ingress {
